@@ -31,8 +31,8 @@ public class Humain {
 		parler("Bonjour ! Je m'appelle " + getNom() + " et j'aime boire du " + getBoisson_favorite() + ".");
 	}
 	
-	public void boire(String boisson) {
-		parler("Mmmm, un bon verre de " + boisson + " ! GLOUPS !");
+	public void boire() {
+		parler("Mmmm, un bon verre de " + boisson_favorite + " ! GLOUPS !");
 	}
 	
 	public void gagnerArgent(int gain) {

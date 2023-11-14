@@ -3,7 +3,10 @@ package personnage;
 public class Humain {
 	private String nom;
 	private String boisson_favorite;
-	protected int argent;
+	private int argent;
+	protected int nbConnaissance = 0;
+	private static int NB_CONNAISSANCE_MAX = 30;
+	protected Humain memoire[] = new Humain[NB_CONNAISSANCE_MAX];
 	
 	public Humain(String nom, String boisson_favorite, int argent) {
 		this.nom = nom;
@@ -50,5 +53,34 @@ public class Humain {
 		else {
 			parler("J'ai " + getArgent() + " sous en poche. Je vais pouvoir m'offrir " + bien + " à " + prix + " sous.");
 		}
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		this.direBonjour();
+		autreHumain.repondre(this);
+		memoriser(autreHumain);
+	}
+	
+	public void listerConnaissance() {
+		String chaine = "";
+		for(int i = 0;i<NB_CONNAISSANCE_MAX;i++)  {
+			if (memoire[i] != null)
+				chaine +=  memoire[i].getNom() + ", ";
+		
+		}
+		parler("Je connais beaucoup de monde dont: " + chaine);
+		
+	}
+	
+	public void repondre(Humain humain) {
+		direBonjour();
+		memoriser(humain);
+	}
+
+	private void memoriser(Humain humain) {
+		if (nbConnaissance >= NB_CONNAISSANCE_MAX)
+			nbConnaissance = 0;
+		memoire[nbConnaissance] = humain;
+		nbConnaissance += 1;
 	}
 }

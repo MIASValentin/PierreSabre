@@ -37,4 +37,10 @@ public class Yakuza extends Humain {
 		this.reputation += 1;
 		parler("Ce ronin pensait vraiment battre Yaku Le Noir du clan de Warsong ? Je l'ai dépouillé de ses" + gain + " sous");
 	}
+	
+	@Override
+	public void direBonjour() {
+		parler("Bonjour ! Je m'appelle " + getNom() + " et j'aime boire du " + getBoisson_favorite() + ".");
+		parler("Mon clan est celui de " + getClan() + ".");
+	}
 }
